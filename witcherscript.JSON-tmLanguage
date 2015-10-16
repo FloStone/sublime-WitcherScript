@@ -28,7 +28,7 @@
     	}
     },
     {
-    	"match": "\\b(import|statemachine|continue|if|else|private|public|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
+    	"match": "\\b(import|statemachine|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
     	"name": "keyword.ws"
     },
     {
@@ -80,6 +80,12 @@
     		"5": {"name": "keyword.ws"},
     		"6": {"name": "entity.other.inherited-class.ws"}
     	},
+    	"patterns": [
+    		{
+    			"match": "this",
+    			"name": "support.class.ws"
+    		}
+    	],
     	"name": "entity.name.type.ws"
     },
     {

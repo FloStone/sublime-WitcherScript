@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(import|statemachine|continue|if|else|private|public|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
+			<string>\b(import|statemachine|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
 			<key>name</key>
 			<string>keyword.ws</string>
 		</dict>
@@ -166,6 +166,15 @@
 			<string>(class|event|enum|state|struct)\s*(/\*.*\*/\s*)?\s\w*((\s+)?(in)\s+(\w*))?</string>
 			<key>name</key>
 			<string>entity.name.type.ws</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>this</string>
+					<key>name</key>
+					<string>support.class.ws</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>begin</key>
