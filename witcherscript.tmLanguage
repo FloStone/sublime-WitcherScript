@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(import|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
+			<string>\b(import|editable|latent|timer|entry|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
 			<key>name</key>
 			<string>keyword.ws</string>
 		</dict>
@@ -81,7 +81,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(true|false)\b</string>
+			<string>\b(true|false|NULL|null)\b</string>
 			<key>name</key>
 			<string>constant.language.ws</string>
 		</dict>
@@ -210,14 +210,24 @@
 					<key>name</key>
 					<string>keyword.ws</string>
 				</dict>
-				<key>5</key>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.ws</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.ws</string>
+				</dict>
+				<key>9</key>
 				<dict>
 					<key>name</key>
 					<string>entity.other.inherited-class.ws</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(new) \s*(\w*)( \s*(in) \s*(\w*))?</string>
+			<string>(new)\s+(\w*)(\s+(in)\s+(((\w*)(\.))+)?(\w*))?</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -230,6 +240,30 @@
 			<string>this</string>
 			<key>name</key>
 			<string>support.class.ws</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\((\s*\w*\s*)\)\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\((\s*\w*\s*)\)\w+</string>
 		</dict>
 	</array>
 	<key>scopeName</key>

@@ -28,7 +28,7 @@
     	}
     },
     {
-    	"match": "\\b(import|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
+    	"match": "\\b(import|editable|latent|timer|entry|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
     	"name": "keyword.ws"
     },
     {
@@ -43,7 +43,7 @@
     	"name": "constant.numeric.ws"
     },
     {
-    	"match": "\\b(true|false)\\b",
+    	"match": "\\b(true|false|NULL|null)\\b",
     	"name": "constant.language.ws"
     },
     {
@@ -99,12 +99,14 @@
     	"name": "string.quoted.single.ws"
     },
     {
-    	"match": "(new) \\s*(\\w*)( \\s*(in) \\s*(\\w*))?",
+    	"match": "(new)\\s+(\\w*)(\\s+(in)\\s+(((\\w*)(\\.))+)?(\\w*))?",
     	"captures": {
     		"1": {"name": "keyword.ws"},
     		"2": {"name": "support.class.ws"},
     		"4": {"name": "keyword.ws"},
-    		"5": {"name": "entity.other.inherited-class.ws"}
+            "7": {"name": "support.class.ws"},
+            "8": {"name": "keyword.operator.ws"},
+            "9": {"name": "entity.other.inherited-class.ws"}
     	}
     },
     {
@@ -114,6 +116,18 @@
     {
     	"match": "this",
     	"name": "support.class.ws"
+    },
+    {
+        "match": "\\((\\s*\\w*\\s*)\\)\\(",
+        "captures": {
+            "1": {"name": "support.class.ws"}
+        }
+    },
+    {
+        "match": "\\((\\s*\\w*\\s*)\\)\\w+",
+        "captures": {
+            "1": {"name": "support.class.ws"}
+        }
     }
   ]
 }
