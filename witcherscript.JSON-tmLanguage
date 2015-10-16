@@ -1,0 +1,113 @@
+// [PackageDev] target_format: plist, ext: tmLanguage
+    { "name": "Witcher Script",
+  "scopeName": "source.ws",
+  "fileTypes": [""],
+  "uuid": "4e75581f-2727-416d-a72f-a98b8f70be3a",
+
+  "patterns": [
+    {
+    	"begin": "\/\\*",
+    	"end": "\\*\/",
+    	"name": "comment.block.ws"
+    },
+    {
+    	"match": "\/\/.*",
+    	"name": "comment.double-slash.ws"
+    },
+    {
+    	"match": "array<(\\w*)>",
+    	"captures": {
+    		"1": {"name": "string.ws"}
+    	},
+    	"name": "support.function.ws"
+    },
+    {
+    	"match": "(:)\\s*(\\w*)",
+    	"captures": {
+    		"2": {"name": "support.class.ws"}
+    	}
+    },
+    {
+    	"match": "\\b(import|statemachine|continue|if|else|private|public|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
+    	"name": "keyword.ws"
+    },
+    {
+    	"match": "(extends) \\s*(\\w*)",
+    	"captures": {
+    		"1": {"name": "keyword.ws"},
+    		"2": {"name": "entity.other.inherited-class.ws"}
+    	}
+    },
+    {
+    	"match": "\\b([0-9]*(\\.)?f?)\\b",
+    	"name": "constant.numeric.ws"
+    },
+    {
+    	"match": "\\b(true|false)\\b",
+    	"name": "constant.language.ws"
+    },
+    {
+    	"match": "\\w*(\\.)",
+    	"captures": {
+    		"1": {"name": "keyword.operator.ws"}
+    	},
+    	"name": "support.class.ws"
+    },
+    {
+    	"match": "=|!|<|>|\\||&|\\+|-|\\*",
+    	"name": "keyword.operator.ws"
+    },
+    {
+    	"match": "(var)\\s+\\w*(((,)\\s*\\w*)+)?",
+    	"captures": {
+    		"1": {"name": "support.class.ws"}
+    	},
+    	"name": "variable.parameter.ws"
+    },
+    {
+    	"match": "(function)\\s*(\/\\*.*\\*\/\\s*)? \\w*",
+    	"captures": {
+    		"1": {"name": "support.type.ws"},
+    		"2": {"name": "comment.block.ws"}
+    	},
+    	"name": "entity.name.function.ws"
+    },
+    {
+    	"match": "(class|event|enum|state|struct)\\s*(\/\\*.*\\*\/\\s*)?\\s\\w*((\\s+)?(in)\\s+(\\w*))?",
+    	"captures": {
+    		"1": {"name": "support.type.ws"},
+    		"2": {"name": "comment.block.ws"},
+    		"5": {"name": "keyword.ws"},
+    		"6": {"name": "entity.other.inherited-class.ws"}
+    	},
+    	"name": "entity.name.type.ws"
+    },
+    {
+    	"begin": "\"",
+    	"end": "\"",
+    	"name": "string.quoted.double.ws"
+    },
+    {
+    	"begin": "'",
+    	"end": "'",
+    	"name": "string.quoted.single.ws"
+    },
+    {
+    	"match": "(new) \\s*(\\w*)( \\s*(in) \\s*(\\w*))?",
+    	"captures": {
+    		"1": {"name": "keyword.ws"},
+    		"2": {"name": "support.class.ws"},
+    		"4": {"name": "keyword.ws"},
+    		"5": {"name": "entity.other.inherited-class.ws"}
+    	}
+    },
+    {
+    	"match": "\\b(string|int|integer|bool)\\b",
+    	"name": "support.type.ws"
+    },
+    {
+    	"match": "this",
+    	"name": "support.class.ws"
+    }
+  ]
+}
