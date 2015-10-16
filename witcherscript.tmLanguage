@@ -27,20 +27,33 @@
 		<dict>
 			<key>captures</key>
 			<dict>
-				<key>1</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>string.ws</string>
+					<string>support.function.ws</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>support.type.ws</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.ws</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>array&lt;(\w*)&gt;</string>
-			<key>name</key>
-			<string>support.function.ws</string>
+			<string>(:)\s*((array)\s*&lt;(\s*.*\s*)&gt;\s*)?(\w*)?</string>
 		</dict>
 		<dict>
 			<key>captures</key>
 			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
@@ -48,11 +61,11 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(:)\s*(\w*)</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(import|editable|latent|timer|entry|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
+			<string>\b(import|editable|autobind|hint|latent|timer|entry|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
 			<key>name</key>
 			<string>keyword.ws</string>
 		</dict>
@@ -101,7 +114,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>=|!|&lt;|&gt;|\||&amp;|\+|-|\*</string>
+			<string>=|!|&lt;|&gt;|\||&amp;|\+|-|\*|/</string>
 			<key>name</key>
 			<string>keyword.operator.ws</string>
 		</dict>
@@ -231,13 +244,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(string|int|integer|bool)\b</string>
+			<string>\b(string|int|integer|bool|float)\b</string>
 			<key>name</key>
 			<string>support.type.ws</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>this</string>
+			<string>\b(this|theGame|theInput|thePlayer|theSound|parent)\b</string>
 			<key>name</key>
 			<string>support.class.ws</string>
 		</dict>
@@ -264,6 +277,66 @@
 			</dict>
 			<key>match</key>
 			<string>\((\s*\w*\s*)\)\w+</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(Str(Len|StartsWith|Contains|UpperUTF|LowerUTF|Cmp|Find(First|Last)|Split(First|Last)|ReplaceAll|Replace|Mid|Left|Right|Before(First|Last)|After(First|Last)|BeginsWith|EndsWith|Upper|Lower|Char|ingToInt))\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(NameTo(String|Int|Float)|FloatToString|FloatToStringPrec|IntToString|NoTrailZeros)\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(IsActive|GetStateName|Can(Enter|Leave)State|(Begin|End|Continued|Paused)State)\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>((Push|Pop|Goto|Get|GetCurrent|IsIn)State|GetCurrentSTateName|LockEntryFunction|SetCleanupFunction|DebugDumpEntryFunctionCalls|ToString|LogStates)\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(Log|Uint64ToString|Trace|DebugBrake|Sleep|SleepOneFrame|KillThread|DumpClassHierarchy|EnumGet(Max|Min)|IsNameValid)\(</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
