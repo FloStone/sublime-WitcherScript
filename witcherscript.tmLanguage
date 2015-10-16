@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(import|statemachine|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
+			<string>\b(import|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\b</string>
 			<key>name</key>
 			<string>keyword.ws</string>
 		</dict>

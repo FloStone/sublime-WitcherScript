@@ -28,7 +28,7 @@
     	}
     },
     {
-    	"match": "\\b(import|statemachine|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
+    	"match": "\\b(import|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
     	"name": "keyword.ws"
     },
     {
