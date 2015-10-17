@@ -84,11 +84,11 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(extends) \s*(\w*)</string>
+			<string>(extends)\s*(\w*)</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b([0-9]*(\.)?f?)\b</string>
+			<string>\b([0-9]*(\.)?(f)?)\b</string>
 			<key>name</key>
 			<string>constant.numeric.ws</string>
 		</dict>
@@ -130,10 +130,12 @@
 			<key>match</key>
 			<string>(var)\s+\w*(((,)\s*\w*)+)?</string>
 			<key>name</key>
-			<string>variable.parameter.ws</string>
+			<string>variable.other.ws</string>
 		</dict>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>(function|event|enum|state|struct)\s*(/\*.*\*/\s*)?(\w+)\s*\(</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -145,11 +147,57 @@
 					<key>name</key>
 					<string>comment.block.ws</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.ws</string>
+				</dict>
 			</dict>
-			<key>match</key>
-			<string>(function)\s*(/\*.*\*/\s*)? \w*</string>
-			<key>name</key>
-			<string>entity.name.function.ws</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>/\*.*\*/</string>
+					<key>name</key>
+					<string>comment.block.ws</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>out|optional</string>
+					<key>name</key>
+					<string>keyword.ws</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.ws</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.class.ws</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>support.class.ws</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>:\s*((array)&lt;(\s*\w*\s*)&gt;|(\w*))</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\w*</string>
+					<key>name</key>
+					<string>variable.parameter.ws</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -176,7 +224,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(class|event|enum|state|struct)\s*(/\*.*\*/\s*)?\s\w*((\s+)?(in)\s+(\w*))?</string>
+			<string>(class)\s*(/\*.*\*/\s*)?\s\w*((\s+)?(in)\s+(\w*))?</string>
 			<key>name</key>
 			<string>entity.name.type.ws</string>
 			<key>patterns</key>
@@ -244,7 +292,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(string|int|integer|bool|float)\b</string>
+			<string>\b(string|int|integer|bool|float|function|class|enum|struct)\b</string>
 			<key>name</key>
 			<string>support.type.ws</string>
 		</dict>
@@ -274,9 +322,24 @@
 					<key>name</key>
 					<string>support.class.ws</string>
 				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.ws</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.ws</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.ws</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>\((\s*\w*\s*)\)\w+</string>
+			<string>\((\s*\w*\s*)\)\s*(((\w*)(\.))*)?((\bthis\b)|\w+)</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -337,6 +400,42 @@
 			</dict>
 			<key>match</key>
 			<string>(Log|Uint64ToString|Trace|DebugBrake|Sleep|SleepOneFrame|KillThread|DumpClassHierarchy|EnumGet(Max|Min)|IsNameValid)\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(EulerAngles|Vector|Rand(Range|Different|F|RangeF|NoiseF)|Pi|Abs|Min|Max|Clamp|Deg2Rad|Rad2Deg|(Abs|Sgn|Mod|Sin|Asin|Cos|Acos|Tan|Atan|Exp|Pow|Log|Sqrt|Sqr|Min|Max|Clamp|Lerp|Ceil|Floor|Round|LerpAngle)F|Angle(Distance|Approach)|CalcSeed|RoundMath|RoundTo|ReinterpretIntAsFLoat|AngleNormalize|AngleNormalize180|NodeToAngleDistance|Vec(Dot2D|Dot|Cross|Length2D|LengthSquared|Length|Normalize2D|Normalize|Rand2D|Rand|Mirror|Distance|DistanceSquared|Distance2D|DistanceSquared2D|DistanceToEdge|NearestPointOnEdge|ToRotation|Heading|FromHeading|TRansform|TransformDir|TransformH|GetAngleBetween|GetAngleDegAroundAxis|ProjectPointPlane|ToString|Interpolate|ToStrinPrec)|Rot(X|Y|Z|Forward|Right|Up|ToMatrix|Axes|Dot|Rand)|Matrix(Identity|Built(Translation|Rotation|Scale|PreScale|TRS|RTS|FromDirectionVector)|Get(Translation|Rotation|Scale|Axis(X|Y|Z)|DirectionVector|Inverted))|SphereIntersect(Ray|Edge)|Int8ToInt|IntToInt8|IntToUint64|Uint64ToInt)\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(EngineTime(FromFloat|ToFloat|ToString))\(</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(Log\w*)\(</string>
 		</dict>
 	</array>
 	<key>scopeName</key>

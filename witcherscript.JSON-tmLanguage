@@ -34,14 +34,14 @@
     	"name": "keyword.ws"
     },
     {
-    	"match": "(extends) \\s*(\\w*)",
+    	"match": "(extends)\\s*(\\w*)",
     	"captures": {
     		"1": {"name": "keyword.ws"},
     		"2": {"name": "entity.other.inherited-class.ws"}
     	}
     },
     {
-    	"match": "\\b([0-9]*(\\.)?f?)\\b",
+    	"match": "\\b([0-9]*(\\.)?(f)?)\\b",
     	"name": "constant.numeric.ws"
     },
     {
@@ -64,18 +64,57 @@
     	"captures": {
     		"1": {"name": "support.class.ws"}
     	},
-    	"name": "variable.parameter.ws"
+    	"name": "variable.other.ws"
+    },
+    // {
+    // 	"match": "(function)\\s*(\/\\*.*\\*\/\\s*)? \\w*",
+    // 	"captures": {
+    // 		"1": {"name": "support.type.ws"},
+    // 		"2": {"name": "comment.block.ws"}
+    // 	},
+    // 	"name": "entity.name.function.ws"
+    // },
+    // {
+    //     "match": "\\(((\\s*(out|optional)\\s*)?(\\s*\\w+\\s*):(\\s*\\w*\\s*),?)+\\)",
+    //     "captures": {
+    //         "2": {"name": "keyword.ws"},
+    //         "4": {"name": "variable.parameter.ws"},
+    //         "5": {"name": "support.class.ws"}
+    //     }
+    // },
+    {
+        "begin": "(function|event|enum|state|struct)\\s*(\/\\*.*\\*\/\\s*)?(\\w+)\\s*\\(",
+        "beginCaptures": {
+            "1": {"name": "support.type.ws"},
+            "2": {"name": "comment.block.ws"},
+            "3": {"name": "entity.name.function.ws"}
+        },
+        "end": "\\)",
+        "patterns": [
+            {
+                "match": "\/\\*.*\\*\/",
+                "name": "comment.block.ws"
+            },
+            {
+                "match": "out|optional",
+                "name": "keyword.ws"
+            },
+            {
+                "match": ":\\s*((array)<(\\s*\\w*\\s*)>|(\\w*))",
+                "captures": {
+                    "2": {"name": "support.function.ws"},
+                    "3": {"name": "support.class.ws"},
+                    "4": {"name": "support.class.ws"}
+                }
+            },
+            {
+                "match": "\\w*",
+                "name": "variable.parameter.ws"
+            }
+        ]
     },
     {
-    	"match": "(function)\\s*(\/\\*.*\\*\/\\s*)? \\w*",
-    	"captures": {
-    		"1": {"name": "support.type.ws"},
-    		"2": {"name": "comment.block.ws"}
-    	},
-    	"name": "entity.name.function.ws"
-    },
-    {
-    	"match": "(class|event|enum|state|struct)\\s*(\/\\*.*\\*\/\\s*)?\\s\\w*((\\s+)?(in)\\s+(\\w*))?",
+    	"match": "(class)\\s*(\/\\*.*\\*\/\\s*)?\\s\\w*((\\s+)?(in)\\s+(\\w*))?",
     	"captures": {
     		"1": {"name": "support.type.ws"},
     		"2": {"name": "comment.block.ws"},
@@ -112,7 +151,7 @@
     	}
     },
     {
-    	"match": "\\b(string|int|integer|bool|float)\\b",
+    	"match": "\\b(string|int|integer|bool|float|function|class|enum|struct)\\b",
     	"name": "support.type.ws"
     },
     {
@@ -126,9 +165,12 @@
         }
     },
     {
-        "match": "\\((\\s*\\w*\\s*)\\)\\w+",
+        "match": "\\((\\s*\\w*\\s*)\\)\\s*(((\\w*)(\\.))*)?((\\bthis\\b)|\\w+)",
         "captures": {
-            "1": {"name": "support.class.ws"}
+            "1": {"name": "support.class.ws"},
+            "4": {"name": "support.class.ws"},
+            "5": {"name": "keyword.operator.ws"},
+            "7": {"name": "support.class.ws"}
         }
     },
     // String functions (string.ws)
@@ -161,6 +203,26 @@
     // Miscellanious functions (misc.ws)
     {
         "match": "(Log|Uint64ToString|Trace|DebugBrake|Sleep|SleepOneFrame|KillThread|DumpClassHierarchy|EnumGet(Max|Min)|IsNameValid)\\(",
+        "captures": {
+            "1": {"name": "support.function.ws"}
+        }
+    },
+    // Math functions (math.ws)
+    {
+        "match": "(EulerAngles|Vector|Rand(Range|Different|F|RangeF|NoiseF)|Pi|Abs|Min|Max|Clamp|Deg2Rad|Rad2Deg|(Abs|Sgn|Mod|Sin|Asin|Cos|Acos|Tan|Atan|Exp|Pow|Log|Sqrt|Sqr|Min|Max|Clamp|Lerp|Ceil|Floor|Round|LerpAngle)F|Angle(Distance|Approach)|CalcSeed|RoundMath|RoundTo|ReinterpretIntAsFLoat|AngleNormalize|AngleNormalize180|NodeToAngleDistance|Vec(Dot2D|Dot|Cross|Length2D|LengthSquared|Length|Normalize2D|Normalize|Rand2D|Rand|Mirror|Distance|DistanceSquared|Distance2D|DistanceSquared2D|DistanceToEdge|NearestPointOnEdge|ToRotation|Heading|FromHeading|TRansform|TransformDir|TransformH|GetAngleBetween|GetAngleDegAroundAxis|ProjectPointPlane|ToString|Interpolate|ToStrinPrec)|Rot(X|Y|Z|Forward|Right|Up|ToMatrix|Axes|Dot|Rand)|Matrix(Identity|Built(Translation|Rotation|Scale|PreScale|TRS|RTS|FromDirectionVector)|Get(Translation|Rotation|Scale|Axis(X|Y|Z)|DirectionVector|Inverted))|SphereIntersect(Ray|Edge)|Int8ToInt|IntToInt8|IntToUint64|Uint64ToInt)\\(",
+        "captures": {
+            "1": {"name": "support.function.ws"}
+        }
+    },
+    // engineTime functions (engineTime.ws)
+    {
+        "match": "(EngineTime(FromFloat|ToFloat|ToString))\\(",
+        "captures": {
+            "1": {"name": "support.function.ws"}
+        }
+    },
+    {
+        "match": "(Log\\w*)\\(",
         "captures": {
             "1": {"name": "support.function.ws"}
         }
