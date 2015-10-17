@@ -66,24 +66,8 @@
     	},
     	"name": "variable.other.ws"
     },
-    // {
-    // 	"match": "(function)\\s*(\/\\*.*\\*\/\\s*)? \\w*",
-    // 	"captures": {
-    // 		"1": {"name": "support.type.ws"},
-    // 		"2": {"name": "comment.block.ws"}
-    // 	},
-    // 	"name": "entity.name.function.ws"
-    // },
-    // {
-    //     "match": "\\(((\\s*(out|optional)\\s*)?(\\s*\\w+\\s*):(\\s*\\w*\\s*),?)+\\)",
-    //     "captures": {
-    //         "2": {"name": "keyword.ws"},
-    //         "4": {"name": "variable.parameter.ws"},
-    //         "5": {"name": "support.class.ws"}
-    //     }
-    // },
     {
-        "begin": "(function|event|enum|state|struct)\\s*(\/\\*.*\\*\/\\s*)?(\\w+)\\s*\\(",
+        "begin": "(function|event)\\s*(\/\\*.*\\*\/\\s*)?(\\w+)\\s*\\(",
         "beginCaptures": {
             "1": {"name": "support.type.ws"},
             "2": {"name": "comment.block.ws"},
@@ -112,6 +96,13 @@
                 "name": "variable.parameter.ws"
             }
         ]
+    },
+    {
+        "match": "(enum|state|struct)\\s+\\w+",
+        "captures": {
+            "1": {"name": "support.type.ws"}
+        },
+        "name": "entity.name.function.ws"
     },
     {
     	"match": "(class)\\s*(\/\\*.*\\*\/\\s*)?\\s\\w*((\\s+)?(in)\\s+(\\w*))?",
@@ -155,7 +146,7 @@
     	"name": "support.type.ws"
     },
     {
-    	"match": "\\b(this|theGame|theInput|thePlayer|theSound|parent)\\b",
+    	"match": "\\b(this|theGame|theInput|thePlayer|theSound|parent|super)\\b",
     	"name": "support.class.ws"
     },
     {

@@ -134,7 +134,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(function|event|enum|state|struct)\s*(/\*.*\*/\s*)?(\w+)\s*\(</string>
+			<string>(function|event)\s*(/\*.*\*/\s*)?(\w+)\s*\(</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -198,6 +198,20 @@
 					<string>variable.parameter.ws</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.type.ws</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(enum|state|struct)\s+\w+</string>
+			<key>name</key>
+			<string>entity.name.function.ws</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -298,7 +312,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(this|theGame|theInput|thePlayer|theSound|parent)\b</string>
+			<string>\b(this|theGame|theInput|thePlayer|theSound|parent|super)\b</string>
 			<key>name</key>
 			<string>support.class.ws</string>
 		</dict>
