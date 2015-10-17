@@ -30,7 +30,7 @@
         }
     },
     {
-    	"match": "\\b(import|editable|autobind|hint|latent|timer|entry|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
+    	"match": "\\b(import|quest|editable|autobind|hint|latent|timer|entry|statemachine|exec|continue|if|else|private|public|abstract|protected|final|const|default|out|return|switch|case|break|optional|while|for|saved)\\b",
     	"name": "keyword.ws"
     },
     {
@@ -212,8 +212,16 @@
             "1": {"name": "support.function.ws"}
         }
     },
+    // Because I am too lazy to include all the log functions from misc.ws
     {
         "match": "(Log\\w*)\\(",
+        "captures": {
+            "1": {"name": "support.function.ws"}
+        }
+    },
+    // Game functions (game.ws)
+    {
+        "match": "(IsPaused|IsPausedForReason|IsStopped|IsLoadingScreenVideoPlaying|Pause|PauseCutscenes|UnpauseCutscenes|ExitGame|IsActivelyPaused|SetActivePause|GetEngineTime|GetEngineTimeAsSeconds|(Get|Set|Remove|SetOrRemove|Log)TimeScale|RemoveAllTimeScales|(Set|Get)HoursPerMinute|(Get|Set)DifficultyLevel|(Set|Is)VibrationEnabled|VibrateController|StopVibrateController|GetCurrentVibrationFreq|RemoveSpecificRumble|OverrideRumbleDuration|IsPadConnected|(Get(Entit(y|ies)|Nod(e|es))ByTag)|GetNodesByTags|GetWorld|IsFreeCameraEnabled|EnableFreeCamera|GetFreeCameraPosition|IsShowFlagEnabled|SetShowFlag|PlayCutsceneAsync|IsStreaming|PlayCutscene|Fade(Out|In|OutAsync|InAsync)|IsFading|IsBlackscreen|HasBlackscreenRequested|(Set|Reset)FadeLock|(Unlock|Lock)Achievement|Get(Unlocked|All)Achievements|IsAchievementUnlocked|ToggleUserProfileManagerInputProcessing|IsCheatEnabled|ReloadGameplayConfig|GetGameplay(Choice|Config(Float|Bool|Int|Enum)Value)|SetAIObjectsLooseTime|(Add|Remove)InitialFact|ClearInitialFacts|GetCurrentViewportResolution|SetSingleShotLoadingScreen|RadialBlur(Setup|Disable)|FullscreenBlurSetup)\\(",
         "captures": {
             "1": {"name": "support.function.ws"}
         }
