@@ -228,7 +228,7 @@
     },
     // Other functions
     {
-        "match": "(GetWitcherPlayer)\\(",
+        "match": "(GetWitcherPlayer|PushBack|PopBack|Resize|Remove|Contains|FindFIrst|FindLast|Size|Clear|Erase|Insert|Last)\\(",
         "captures": {
             "1": {"name": "support.function.ws"}
         }
