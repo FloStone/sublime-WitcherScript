@@ -98,11 +98,22 @@
         ]
     },
     {
-        "match": "(enum|state|struct)\\s+\\w+",
+        "match": "(enum|struct)\\s+\\w+",
         "captures": {
-            "1": {"name": "support.type.ws"}
+            "1": {"name": "support.type.ws"},
+            "3": {"name": "keyword.ws"},
+            "4": {"name": "entity.other.inherited-class"}
         },
         "name": "entity.name.function.ws"
+    },
+    {
+        "match": "(state)\\s+\\w+(\\s+(in)\\s+(\\w+))?",
+        "captures": {
+            "1": {"name": "support.type.ws"},
+            "3": {"name": "keyword.ws"},
+            "4": {"name": "entity.other.inherited-class"}
+        },
+        "name": "entity.name.type.ws"
     },
     {
     	"match": "(class)\\s*(\/\\*.*\\*\/\\s*)?\\s\\w*((\\s+)?(in)\\s+(\\w*))?",

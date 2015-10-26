@@ -207,11 +207,45 @@
 					<key>name</key>
 					<string>support.type.ws</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.ws</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>(enum|state|struct)\s+\w+</string>
+			<string>(enum|struct)\s+\w+</string>
 			<key>name</key>
 			<string>entity.name.function.ws</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.type.ws</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.ws</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(state)\s+\w+(\s+(in)\s+(\w+))?</string>
+			<key>name</key>
+			<string>entity.name.type.ws</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -473,7 +507,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(GetWitcherPlayer)\(</string>
+			<string>(GetWitcherPlayer|PushBack|PopBack|Resize|Remove|Contains|FindFIrst|FindLast|Size|Clear|Erase|Insert|Last)\(</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
